@@ -7,9 +7,12 @@ class BeersResponse {
   BeersResponse({this.name, this.taps});
 
   factory BeersResponse.fromJson(Map<String, dynamic> json) {
+    
+    var tapsFromJson = json['taps'];
+    List<Tap> tapList = tapsFromJson.cast<Tap>();
     return new BeersResponse(
       name: json['name'],
-      taps: json['taps'],
+      taps: tapList,
     );
   }
 }

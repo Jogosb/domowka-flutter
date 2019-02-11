@@ -11,6 +11,10 @@ class Beer {
   Beer({this.beerName, this.brewery, this.style, this.ibu, this.blg, this.abv, this.image, this.prices});
 
   factory Beer.fromJson(Map<String, dynamic> json) {
+    
+    var pricesFromJson = json['prices'];
+    List<double> priceList = pricesFromJson.cast<double>();
+
     return Beer(
       beerName: json['beer_name'],
       brewery: json['brewery'],
@@ -19,7 +23,7 @@ class Beer {
       blg: json['blg'],
       abv: json['abv'],
       image: json['abv'],
-      prices: json['prices']
+      prices: priceList
     );
   }
 }

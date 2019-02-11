@@ -7,24 +7,10 @@ import 'package:domowka/data/remote/api.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  Future<BeersResponse> beers; 
-//   @override
-//   void initState() {
-//     FutureBuilder<List<Beer>>(
-//   future: ApiClient().fetchBeers(),
-//   builder: (context, snapshot) {
-//     // By default, show a loading spinner
-//     return CircularProgressIndicator();
-//   },
-// );
-
-//   }
-
+  Future<BeersResponse> beers;
 
   @override
   Widget build(BuildContext context) {
-    beers = ApiClient().fetchBeers(); 
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Domówka Beer List',
@@ -32,7 +18,21 @@ class MyApp extends StatelessWidget {
           appBar: new AppBar(
             title: new Text('Domówka Beer List'),
           ),
-          body: BeersList(),
+          body: Column(
+            children: <Widget>[
+              Center(
+                child: FlatButton(
+                  color: Colors.amberAccent,
+                  onPressed: () => _fireLoad(),
+                  child: new Text("Fetch Me Beers!"),
+                ),
+              )
+            ],
+          ),
         ));
+  }
+
+  void _fireLoad() {
+    beers = ApiClient().fetchBeers();
   }
 }
