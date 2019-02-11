@@ -2,7 +2,6 @@
 
 Flutter application for Domowka Cafe 
 
-## Getting Started
+## architecture 
 
-For help getting started with Flutter, view our online
-[documentation](http://flutter.io/).
+Playing with BLoC architecture and RxDart 
