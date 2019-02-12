@@ -32,7 +32,7 @@ class BeersResponse {
 
 class Tap {
     String id;
-    CurrentBeer currentBeer;
+    Beer currentBeer;
 
     Tap({
         this.id,
@@ -41,7 +41,7 @@ class Tap {
 
     factory Tap.fromJson(Map<String, dynamic> json) => new Tap(
         id: json["id"],
-        currentBeer: CurrentBeer.fromJson(json["current_beer"]),
+        currentBeer: Beer.fromJson(json["current_beer"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -50,7 +50,7 @@ class Tap {
     };
 }
 
-class CurrentBeer {
+class Beer {
     String beerName;
     String brewery;
     String style;
@@ -60,7 +60,7 @@ class CurrentBeer {
     String image;
     List<String> prices;
 
-    CurrentBeer({
+    Beer({
         this.beerName,
         this.brewery,
         this.style,
@@ -71,7 +71,7 @@ class CurrentBeer {
         this.prices,
     });
 
-    factory CurrentBeer.fromJson(Map<String, dynamic> json) => new CurrentBeer(
+    factory Beer.fromJson(Map<String, dynamic> json) => new Beer(
         beerName: json["beer_name"],
         brewery: json["brewery"],
         style: json["style"],

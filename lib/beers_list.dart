@@ -11,14 +11,14 @@ class BeersList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<CurrentBeer>>(
+    return StreamBuilder<List<Beer>>(
       stream: bloc.beers,
       builder: _buildView,
     );
   }
 
   Widget _buildView(
-      BuildContext context, AsyncSnapshot<List<CurrentBeer>> snapshot) {
+      BuildContext context, AsyncSnapshot<List<Beer>> snapshot) {
     if (snapshot.hasData && snapshot.data.length > 0) {
       print("BuildView with beers!"); 
       return _buildBeersView(context, snapshot.data);
@@ -32,7 +32,7 @@ class BeersList extends StatelessWidget {
     return Text("NO ITEMS YET :(");
   }
 
-  Widget _buildBeersView(BuildContext context, List<CurrentBeer> data) {
+  Widget _buildBeersView(BuildContext context, List<Beer> data) {
     return ListView.builder(
       itemCount: data.length,
       itemBuilder: (context, index) {

@@ -5,12 +5,11 @@ import 'package:rxdart/rxdart.dart';
 import 'package:domowka/models/api/beers_response.dart';
 
 abstract class BeersBloc extends Bloc {
-  Stream<List<CurrentBeer>> get beers;
+  Stream<List<Beer>> get beers;
 }
-
 class BeersBlocImpl extends BeersBloc {
   final ApiClient apiClient;
-  final BehaviorSubject<List<CurrentBeer>> _beersList;
+  final BehaviorSubject<List<Beer>> _beersList;
 
   BeersBlocImpl(this.apiClient)
       : assert(apiClient != null),
@@ -22,7 +21,7 @@ class BeersBlocImpl extends BeersBloc {
   }
 
   @override
-  Stream<List<CurrentBeer>> get beers => _beersList;
+  Stream<List<Beer>> get beers => _beersList;
 
   @override
   void dispose() {

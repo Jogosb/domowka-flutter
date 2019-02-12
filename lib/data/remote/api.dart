@@ -4,7 +4,7 @@ import 'package:domowka/models/api/beers_response.dart';
 class ApiClient {
   ApiClient();
 
-  Future<List<CurrentBeer>> fetchBeers() async {
+  Future<List<Beer>> fetchBeers() async {
     final response = await http.get(
         'https://ontap.pl/?multitap_id=243&webapi=d928bdaaa3ff9b717edf28764455c799');
 
