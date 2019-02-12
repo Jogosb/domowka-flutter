@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'beers_list.dart';
-import 'package:domowka/models/api/beer.dart';
 import 'package:domowka/models/api/beers_response.dart';
 import 'package:domowka/data/remote/api.dart';
 
