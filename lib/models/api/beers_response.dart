@@ -8,8 +8,8 @@ class BeersResponse {
 
   factory BeersResponse.fromJson(Map<String, dynamic> json) {
     
-    var tapsFromJson = json['taps'];
-    List<Tap> tapList = tapsFromJson.cast<Tap>();
+    var list = json['taps'] as List;
+    List<Tap> tapList = list.map((i) => Tap.fromJson(i)).toList();
     return new BeersResponse(
       name: json['name'],
       taps: tapList,
