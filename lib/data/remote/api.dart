@@ -4,7 +4,7 @@ import 'package:domowka/models/api/beers_response.dart';
 class ApiClient {
   ApiClient();
 
-  Future<BeersResponse> fetchBeers() async {
+  Future<List<CurrentBeer>> fetchBeers() async {
     final response = await http.get(
         'https://ontap.pl/?multitap_id=243&webapi=d928bdaaa3ff9b717edf28764455c799');
 
@@ -15,7 +15,7 @@ class ApiClient {
       print(beersResponse.taps[0].currentBeer.beerName);
       print(beersResponse.taps[0].currentBeer.prices[0]);
 
-      return null;
+      return beersResponse.taps.map((tap) => tap.currentBeer).toList();
     } else {
       print("FAILURE $response");
       throw Exception("Failed to load beers!");

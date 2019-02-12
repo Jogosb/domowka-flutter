@@ -1,3 +1,5 @@
+import 'package:domowka/beers_list.dart';
+import 'package:domowka/blocs/beers_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:domowka/models/api/beers_response.dart';
 import 'package:domowka/data/remote/api.dart';
@@ -13,24 +15,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Domówka Beer List',
         home: new Scaffold(
-          appBar: new AppBar(
-            title: new Text('Domówka Beer List'),
-          ),
-          body: Column(
-            children: <Widget>[
-              Center(
-                child: FlatButton(
-                  color: Colors.amberAccent,
-                  onPressed: () => _fireLoad(),
-                  child: new Text("Fetch Me Beers!"),
-                ),
-              )
-            ],
-          ),
-        ));
-  }
-
-  void _fireLoad() {
-    beers = ApiClient().fetchBeers();
+            appBar: new AppBar(
+              title: new Text('Domówka Beer List'),
+            ),
+            body: BeersList(
+              bloc: BeersBlocImpl(ApiClient()),
+            )));
   }
 }
