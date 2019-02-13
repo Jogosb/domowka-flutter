@@ -17,14 +17,20 @@ class BeersBlocImpl extends BeersBloc {
     apiClient.fetchBeers().then((value) {
       print("beers fetched! ${value.length}");
       _beersList.add(value);
+    }).catchError((error){
+      print("error $error");
+      _beersList.add([]);
     });
-  }
-
-  @override
-  Stream<List<Beer>> get beers => _beersList;
-
-  @override
-  void dispose() {
-    _beersList.close();
+      }
+    
+      @override
+      Stream<List<Beer>> get beers => _beersList;
+    
+      @override
+      void dispose() {
+        _beersList.close();
+      }
+    
+      handleErrror(eroror) {
   }
 }

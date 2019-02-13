@@ -27,6 +27,14 @@ class BeersList extends StatelessWidget {
       return _buildNoItemsView(context);
     }
   }
+  
+  Widget _buildProgressView(BuildContext context) {
+    return Text("NO ITEMS YET :(");
+  }
+
+  Widget _buildErrorView(BuildContext context) {
+    return Text("NO ITEMS YET :(");
+  }
 
   Widget _buildNoItemsView(BuildContext context) {
     return Text("NO ITEMS YET :(");
