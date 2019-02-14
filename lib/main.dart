@@ -1,5 +1,5 @@
 import 'package:domowka/beers_list.dart';
-import 'package:domowka/blocs/beers_bloc.dart';
+import 'package:domowka/blocs/beers/beers_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:domowka/models/api/beers_response.dart';
 import 'package:domowka/data/remote/api.dart';
