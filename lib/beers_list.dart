@@ -1,6 +1,7 @@
 import 'package:domowka/blocs/beers/beers_bloc.dart';
 import 'package:domowka/blocs/beers/beers_bloc_state.dart';
 import 'package:domowka/models/api/beers_response.dart';
+import 'package:domowka/widgets/beer_row.dart';
 import 'package:flutter/material.dart';
 
 class BeersList extends StatelessWidget {
@@ -24,7 +25,8 @@ class BeersList extends StatelessWidget {
       return _buildBeersView(
           context, (snapshot.data as BeersLoadedState).beers);
     } else if (snapshot.data is BeersLoadingErrorState) {
-      return _buildErrorView(context);
+      return _buildErrorView(
+          context, (snapshot.data as BeersLoadingErrorState).error);
     } else if (snapshot.data is BeersLoadingState) {
       return _buildProgressView(context);
     } else {
@@ -33,22 +35,31 @@ class BeersList extends StatelessWidget {
   }
 
   Widget _buildProgressView(BuildContext context) {
-    return Text("PROGRESS");
+    return Center(
+      child: CircularProgressIndicator(),
+    );
   }
 
-  Widget _buildErrorView(BuildContext context) {
-    return Text("ERROR");
+  Widget _buildErrorView(BuildContext context, String error) {
+    return Center(
+      child: Text("Retrieving beers error! :\n $error"),
+    );
   }
 
   Widget _buildNoItemsView(BuildContext context) {
-    return Text("NO ITEMS YET :(");
+    return Center(
+      child: Text("There are no beers :("),
+    );
   }
 
   Widget _buildBeersView(BuildContext context, List<Beer> data) {
-    return ListView.builder(
+    return ListView.separated(
+      separatorBuilder: (context, index) {
+        return Divider(color: Colors.black54, height: 1.0);
+      },
       itemCount: data.length,
       itemBuilder: (context, index) {
-        return Text(data[index].beerName);
+        return new BeerRow(data[index]);
       },
     );
   }
