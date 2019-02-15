@@ -59,8 +59,14 @@ class BeersList extends StatelessWidget {
       },
       itemCount: data.length,
       itemBuilder: (context, index) {
-        return new BeerRow(data[index]);
+        return new BeerRow(data[index], _onBeerTap);
       },
     );
   }
+
+ void _onBeerTap(Beer beer) {
+    print("on beer tap!");
+    print("${beer.beerName}");
+  }
+
 }
